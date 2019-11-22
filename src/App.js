@@ -1,26 +1,40 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { connect } from "react-redux";
+import Container from '@material-ui/core/Container';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Container className="App-header">
+        <Card>
+          <CardContent>
+            <Typography component="h2">
+              Title
+            </Typography>
+            <Typography >
+              Price
+            </Typography>
+            <Typography color="textSecondary">
+              Volume
+            </Typography>
+          </CardContent>
+        </Card>
+      </Container>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  const { coin } = state.coin;
+  return { coin };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(App);
